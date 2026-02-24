@@ -368,6 +368,177 @@ p {
   background: #fffdf9;
 }
 
+/* Homepage brand palette: #f4d8d7 anchor with complementary sage, warm sand, and cream */
+.home-page {
+  --bg: #f8f1ef;
+  --bg-soft: #fffaf7;
+  --ink: #2b2428;
+  --muted: #6f6568;
+  --line: #e7d6d7;
+  --accent: #f4d8d7;
+  --accent-strong: #8f5964;
+  --accent-sage: #9fb4a6;
+  --blush: #f4d8d7;
+  --sand: #e9ddd1;
+  --card: #fffdfb;
+  --brand-sage-soft: #dbe9e2;
+  --brand-peach-soft: #f2dfd3;
+  --brand-cream: #fbf6f2;
+  background:
+    radial-gradient(circle at 10% -4%, rgba(244, 216, 215, 0.88) 0%, rgba(244, 216, 215, 0) 44%),
+    radial-gradient(circle at 90% 8%, rgba(219, 233, 224, 0.65) 0%, rgba(219, 233, 224, 0) 40%),
+    radial-gradient(circle at 85% 92%, rgba(239, 225, 208, 0.55) 0%, rgba(239, 225, 208, 0) 36%),
+    linear-gradient(180deg, #fdf9f7 0%, #f7efeb 58%, #f3ebe7 100%);
+}
+
+.home-page .site-header {
+  border-bottom: 1px solid rgba(173, 136, 141, 0.26);
+  background: rgba(253, 248, 245, 0.9);
+}
+
+.home-page .site-nav a {
+  border-radius: 10px;
+  font-weight: 600;
+  color: #332a2e;
+}
+
+.home-page .site-nav a:hover {
+  background: rgba(244, 216, 215, 0.56);
+}
+
+.home-page .site-nav .nav-link-highlight {
+  background: #f4d8d7;
+  border: 1px solid #e5c0bf;
+  color: #2a2326;
+  box-shadow: 0 8px 18px rgba(128, 90, 99, 0.16);
+}
+
+.home-page .site-nav .nav-link-highlight:hover {
+  background: #efcac9;
+  border-color: #dbb1b0;
+  color: #241d20;
+  transform: translateY(-1px);
+}
+
+.home-page .hero-overlay {
+  background:
+    linear-gradient(102deg, rgba(253, 249, 245, 0.93) 8%, rgba(244, 216, 215, 0.64) 42%, rgba(219, 233, 224, 0.3) 74%),
+    radial-gradient(circle at 14% 22%, rgba(255, 255, 255, 0.58) 0%, rgba(255, 255, 255, 0) 52%),
+    linear-gradient(180deg, rgba(249, 236, 233, 0.26) 0%, rgba(239, 230, 221, 0.18) 64%);
+}
+
+.home-page .hero-card {
+  border: 1px solid rgba(186, 148, 153, 0.34);
+  box-shadow: 0 18px 36px rgba(103, 80, 81, 0.14);
+  background:
+    linear-gradient(145deg, rgba(248, 230, 229, 0.7) 0%, rgba(255, 253, 250, 0.9) 52%, rgba(233, 243, 236, 0.65) 100%);
+}
+
+.home-page .hero-card-content span {
+  color: #685f63;
+}
+
+.home-page .section-tint {
+  background: linear-gradient(180deg, rgba(250, 242, 238, 0.96) 0%, rgba(245, 235, 228, 0.96) 100%);
+  border-top: 1px solid rgba(179, 147, 151, 0.22);
+  border-bottom: 1px solid rgba(179, 147, 151, 0.22);
+}
+
+.home-page .section-cta {
+  background: linear-gradient(180deg, rgba(253, 247, 242, 0.95) 0%, rgba(247, 238, 232, 0.95) 100%);
+}
+
+.home-page .btn {
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.home-page .btn-primary {
+  background: #f4d8d7;
+  border-color: #e5c0bf;
+  color: #2b2427;
+  box-shadow: 0 8px 18px rgba(128, 90, 99, 0.16);
+}
+
+.home-page .btn-primary:hover {
+  background: #efcac9;
+  border-color: #dbb1b0;
+  color: #231d20;
+  transform: translateY(-1px);
+  box-shadow: 0 11px 22px rgba(122, 84, 93, 0.2);
+}
+
+.home-page .btn-ghost {
+  border-color: rgba(143, 89, 100, 0.32);
+  color: var(--accent-strong);
+  background: rgba(255, 253, 251, 0.88);
+}
+
+.home-page .btn-ghost:hover {
+  border-color: rgba(143, 89, 100, 0.5);
+  background: #fff;
+}
+
+.home-page .services-section {
+  background-color: #f9f4f0;
+}
+
+.home-page .services-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.91),
+    rgba(252, 243, 241, 0.87),
+    rgba(255, 255, 255, 0.91)
+  );
+}
+
+.home-page .service-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(224, 198, 197, 0.78);
+  box-shadow: 0 10px 26px rgba(94, 72, 71, 0.07);
+}
+
+.home-page .service-card-link:hover,
+.home-page .service-card-link:focus-visible {
+  box-shadow: 0 14px 30px rgba(96, 73, 74, 0.1);
+  border-color: rgba(162, 117, 126, 0.42);
+  background: rgba(255, 255, 255, 0.99);
+}
+
+.home-page .service-card-link:focus-visible {
+  outline: 2px solid rgba(162, 117, 126, 0.4);
+}
+
+.home-page .service-card-cta-icon {
+  border-color: rgba(162, 117, 126, 0.34);
+}
+
+.home-page .service-card-link:hover .service-card-cta-icon,
+.home-page .service-card-link:focus-visible .service-card-cta-icon {
+  border-color: rgba(162, 117, 126, 0.44);
+  background: rgba(244, 216, 215, 0.42);
+}
+
+.home-page .faq-item,
+.home-page .step-list li,
+.home-page .authority-card {
+  background: rgba(255, 253, 251, 0.92);
+  box-shadow: 0 10px 22px rgba(83, 63, 62, 0.05);
+}
+
+.home-page .step-number {
+  background: #9fb4a6;
+}
+
+.home-page .site-footer {
+  border-top: 1px solid rgba(173, 136, 141, 0.28);
+  background: linear-gradient(180deg, #f3e7df 0%, #efdfd8 100%);
+}
+
+.home-page .footer-bottom {
+  border-top: 1px solid rgba(173, 136, 141, 0.26);
+}
+
 .feature-list,
 .mini-list {
   margin: 0;
@@ -705,8 +876,14 @@ p {
 }
 
 @media (max-width: 760px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .container {
-    width: min(1120px, calc(100% - 1.6rem));
+    width: min(1120px, calc(100% - 2.4rem));
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 
   .site-header {
@@ -725,6 +902,8 @@ p {
 
   .site-nav {
     justify-content: flex-start;
+    gap: 0.5rem;
+    max-width: 100%;
   }
 
   .hero {
