@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan Your Visit | Skin Refinery Demo</title>
+  <meta name="description" content="Concierge-style booking demo for medical aesthetics appointments.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body class="booking-theme">
+  <main class="lp-main">
+    <div class="lp-shell">
+      <div class="lp-brand">
+        <a class="lp-brand-link" href="index.html" aria-label="Skin Refinery Home">
+          <img class="lp-brand-logo" src="assets/skin_refinery_winnipeg_logo.png" alt="Skin Refinery Medical Aesthetics">
+        </a>
+      </div>
+      <section class="lp-panel lp-hero">
+        <p class="lp-eyebrow">Most-Booked Treatments, One Flow</p>
+        <h1>People who choose a date are people who get results.</h1>
+        <p>Every most-booked Winnipeg treatment is inside this flow. Pick your service, choose your opening, and lock it in with confidence.</p>
+      </section>
+
+      <div id="booking-root" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <script src="booking.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var services = [];
+      var servicesParam = params.get("services");
+      var categoryParam = params.get("category");
+      var campaignService = params.get("utm_service") || params.get("treatment");
+
+      params.getAll("service").forEach(function (value) {
+        if (value) {
+          services.push(value);
+        }
+      });
+
+      if (servicesParam) {
+        servicesParam.split(",").forEach(function (value) {
+          if (value) {
+            services.push(value);
+          }
+        });
+      }
+
+      if (campaignService) {
+        services.push(campaignService);
+      }
+
+      initBookingFlow({
+        preselectedServices: services,
+        preselectedCategory: categoryParam || "",
+        depositAmount: 100
+      });
+    })();
+  </script>
+</body>
+</html>

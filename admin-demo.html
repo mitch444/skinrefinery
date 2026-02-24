@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Demo | Skin Refinery</title>
+  <meta name="description" content="Demo admin view for local booking storage.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body class="booking-theme">
+  <main class="lp-main">
+    <div class="lp-shell">
+      <div class="lp-brand">
+        <a class="lp-brand-link" href="index.html" aria-label="Skin Refinery Home">
+          <img class="lp-brand-logo" src="assets/skin_refinery_winnipeg_logo.png" alt="Skin Refinery Medical Aesthetics">
+        </a>
+      </div>
+      <section class="lp-panel">
+        <p class="lp-eyebrow">Admin Demo</p>
+        <h1 style="margin: 0; font-family: var(--booking-font-serif); font-size: clamp(1.8rem, 4vw, 2.35rem);">Stored Bookings</h1>
+        <p style="margin: 10px 0 0; color: rgba(34, 32, 34, 0.74);">This view reads demo bookings from localStorage (<code>demoBookings</code>).</p>
+        <div class="admin-controls">
+          <button id="refresh-bookings" class="secondary-btn" type="button">Refresh</button>
+        </div>
+        <div id="admin-bookings"></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var STORAGE_KEY = "demoBookings";
+      var container = document.getElementById("admin-bookings");
+      var refreshButton = document.getElementById("refresh-bookings");
+
+      function escapeHtml(value) {
+        return String(value || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function formatLongDate(isoDate) {
+        if (!isoDate) {
+          return "";
+        }
+
+        var date = new Date(isoDate + "T12:00:00");
+        if (Number.isNaN(date.getTime())) {
+          return isoDate;
+        }
+
+        return new Intl.DateTimeFormat("en-US", {
+          weekday: "short",
+          year: "numeric",
+          month: "short",
+          day: "numeric"
+        }).format(date);
+      }
+
+      function readBookings() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          var parsed = JSON.parse(raw || "[]");
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function renderBookings() {
+        var bookings = readBookings();
+
+        if (!bookings.length) {
+          container.innerHTML = '<p class="empty-state">No demo bookings have been saved yet.</p>';
+          return;
+        }
+
+        container.innerHTML =
+          '<div class="admin-table-wrap">' +
+          '<table class="admin-table">' +
+          "<thead>" +
+          "<tr>" +
+          "<th>Name</th>" +
+          "<th>Service</th>" +
+          "<th>Date</th>" +
+          "<th>Time</th>" +
+          "<th>Deposit Paid</th>" +
+          "<th>Confirmation #</th>" +
+          "</tr>" +
+          "</thead>" +
+          "<tbody>" +
+          bookings
+            .map(function (booking) {
+              var name = booking.name || [booking.firstName, booking.lastName].filter(Boolean).join(" ");
+              var date = booking.dateLabel || formatLongDate(booking.date);
+
+              return (
+                "<tr>" +
+                "<td>" +
+                escapeHtml(name) +
+                "</td>" +
+                "<td>" +
+                escapeHtml(booking.service) +
+                "</td>" +
+                "<td>" +
+                escapeHtml(date) +
+                "</td>" +
+                "<td>" +
+                escapeHtml(booking.time) +
+                "</td>" +
+                "<td>" +
+                (booking.depositPaid ? "Yes" : "No") +
+                "</td>" +
+                "<td>" +
+                escapeHtml(booking.confirmationNumber) +
+                "</td>" +
+                "</tr>"
+              );
+            })
+            .join("") +
+          "</tbody>" +
+          "</table>" +
+          "</div>";
+      }
+
+      refreshButton.addEventListener("click", renderBookings);
+      renderBookings();
+    })();
+  </script>
+</body>
+</html>

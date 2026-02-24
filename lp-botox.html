@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botox Visit Planning | Skin Refinery Demo</title>
+  <meta name="description" content="Luxury Botox booking demo with a concierge-style multi-step planning flow.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body class="booking-theme">
+  <main class="lp-main">
+    <div class="lp-shell">
+      <div class="lp-brand">
+        <a class="lp-brand-link" href="index.html" aria-label="Skin Refinery Home">
+          <img class="lp-brand-logo" src="assets/skin_refinery_winnipeg_logo.png" alt="Skin Refinery Medical Aesthetics">
+        </a>
+      </div>
+      <div id="lp-content" class="lp-content">
+        <section class="lp-panel lp-hero">
+          <p class="lp-eyebrow">Botox / Dysport Planning</p>
+          <h1>Tiny changes. Daily confidence.</h1>
+          <p>The goal is not to look treated. The goal is to look like yourself, rested and unmistakably in control.</p>
+          <button id="start-booking" class="primary-btn" type="button">Start Planning My Visit</button>
+        </section>
+
+        <section class="lp-panel">
+          <h2 class="section-title">Why Patients Convert Here</h2>
+          <div class="authority-grid">
+            <article class="authority-item">
+              <h3>Medical-First Screening</h3>
+              <p>Every plan starts with safety, history review, and clear contraindication checks.</p>
+            </article>
+            <article class="authority-item">
+              <h3>Face Mapping Before Product</h3>
+              <p>Movement patterns are reviewed first so placement is deliberate, not reactive.</p>
+            </article>
+            <article class="authority-item">
+              <h3>Dose With Intent</h3>
+              <p>Conservative units preserve expression while reducing the lines you came in for.</p>
+            </article>
+            <article class="authority-item">
+              <h3>Follow-Up Protects Outcomes</h3>
+              <p>Structured check-ins keep results aligned with your goals over time.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="lp-panel">
+          <h2 class="section-title">Pricing Transparency</h2>
+          <div class="pricing-list">
+            <div class="pricing-row">
+              <span>Botox / Dysport (Neuromodulator)</span>
+              <strong>From $9 / unit</strong>
+            </div>
+            <div class="pricing-row">
+              <span>Medical Botox</span>
+              <strong>From $9 / unit</strong>
+            </div>
+            <div class="pricing-row">
+              <span>Consultation (New Patients)</span>
+              <strong>Free</strong>
+            </div>
+          </div>
+          <p class="pricing-note">You make the decision with data, not pressure. Final dosing is confirmed in person.</p>
+        </section>
+      </div>
+
+      <div id="booking-root" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <script src="booking.js"></script>
+  <script>
+    (function () {
+      var cta = document.getElementById("start-booking");
+      var content = document.getElementById("lp-content");
+      var root = document.getElementById("booking-root");
+      var launched = false;
+
+      cta.addEventListener("click", function () {
+        if (launched) {
+          return;
+        }
+
+        launched = true;
+        content.classList.add("is-hidden");
+
+        setTimeout(function () {
+          initBookingFlow({
+            preselectedServices: ["botox"],
+            depositAmount: 100
+          });
+
+          if (root && typeof root.scrollIntoView === "function") {
+            root.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 280);
+      });
+    })();
+  </script>
+</body>
+</html>

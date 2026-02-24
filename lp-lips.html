@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lip Filler Visit Planning | Skin Refinery Demo</title>
+  <meta name="description" content="Luxury lip filler booking demo with concierge-style, medically guided scheduling.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body class="booking-theme">
+  <main class="lp-main">
+    <div class="lp-shell">
+      <div class="lp-brand">
+        <a class="lp-brand-link" href="index.html" aria-label="Skin Refinery Home">
+          <img class="lp-brand-logo" src="assets/skin_refinery_winnipeg_logo.png" alt="Skin Refinery Medical Aesthetics">
+        </a>
+      </div>
+      <div id="lp-content" class="lp-content">
+        <section class="lp-panel lp-hero">
+          <p class="lp-eyebrow">Lip Filler Planning</p>
+          <h1>Shape people notice. Work no one notices.</h1>
+          <p>Balanced lips do not shout. They signal health, proportion, and polish from every angle.</p>
+          <button id="start-booking" class="primary-btn" type="button">Start Planning My Visit</button>
+        </section>
+
+        <section class="lp-panel">
+          <h2 class="section-title">Why This Converts</h2>
+          <div class="authority-grid">
+            <article class="authority-item">
+              <h3>Assessment Before Syringe</h3>
+              <p>Lip anatomy, hydration, and support are reviewed before product is selected.</p>
+            </article>
+            <article class="authority-item">
+              <h3>Volume In Stages</h3>
+              <p>Incremental planning protects shape and keeps your result believable.</p>
+            </article>
+            <article class="authority-item">
+              <h3>Technique With Margin</h3>
+              <p>Injection mapping is chosen to improve precision and reduce recovery variability.</p>
+            </article>
+            <article class="authority-item">
+              <h3>Review, Then Refine</h3>
+              <p>Follow-up guidance sets the next move based on how your tissue responds.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="lp-panel">
+          <h2 class="section-title">Pricing Transparency</h2>
+          <div class="pricing-list">
+            <div class="pricing-row">
+              <span>Lip Flip</span>
+              <strong>$100</strong>
+            </div>
+            <div class="pricing-row">
+              <span>Mini Lip Filler (0.5 mL)</span>
+              <strong>$300</strong>
+            </div>
+            <div class="pricing-row">
+              <span>Full Lip Filler (1.0 mL)</span>
+              <strong>$600</strong>
+            </div>
+          </div>
+          <p class="pricing-note">Plan for shape first, volume second. Product and amount are finalized in clinic.</p>
+        </section>
+      </div>
+
+      <div id="booking-root" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <script src="booking.js"></script>
+  <script>
+    (function () {
+      var cta = document.getElementById("start-booking");
+      var content = document.getElementById("lp-content");
+      var root = document.getElementById("booking-root");
+      var launched = false;
+
+      cta.addEventListener("click", function () {
+        if (launched) {
+          return;
+        }
+
+        launched = true;
+        content.classList.add("is-hidden");
+
+        setTimeout(function () {
+          initBookingFlow({
+            preselectedServices: ["full_lip_filler"],
+            depositAmount: 100
+          });
+
+          if (root && typeof root.scrollIntoView === "function") {
+            root.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 280);
+      });
+    })();
+  </script>
+</body>
+</html>

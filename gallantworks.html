@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Growth Partner — Gallant Works</title>
+  <meta name="description" content="Gallant Works is your growth partner for full books, Google Maps visibility, and long-term digital momentum.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      background: #0f0f12;
+      isolation: isolate;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      object-position: center center;
+      z-index: -2;
+      filter: blur(1.8px) brightness(0.7);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.55),
+        rgba(0, 0, 0, 0.75)
+      );
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-content .eyebrow {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .hero-content h1 {
+      color: #fff;
+      text-wrap: balance;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content .lead {
+      color: rgba(255, 255, 255, 0.9);
+      margin-inline: auto;
+    }
+
+    .hero-content .btn {
+      margin-top: 0.7rem;
+    }
+
+    .competition-section {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: #f4edeb;
+    }
+
+    .competition-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      object-position: center center;
+      z-index: 0;
+      filter: blur(1.6px) brightness(0.8);
+    }
+
+    .competition-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(253, 248, 247, 0.9),
+        rgba(251, 244, 243, 0.86),
+        rgba(250, 242, 241, 0.9)
+      );
+    }
+
+    .competition-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    @supports (height: 100dvh) {
+      .hero-section {
+        height: 100dvh;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero-section {
+        min-height: 560px;
+      }
+
+      .hero-content {
+        max-width: 620px;
+        padding: 0 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="index.html" aria-label="Skin Refinery Home">
+        <img class="logo-img" src="assets/skin_refinery_winnipeg_logo.png" alt="Skin Refinery Medical Aesthetics">
+        <span class="sr-only">Skin Refinery Medical Aesthetics</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">About</a>
+        <a class="nav-link-highlight" href="booking.html">Book Now</a>
+        <a href="gallantworks.html">Growth Partner</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <video class="hero-video" autoplay loop muted playsinline preload="metadata" aria-hidden="true">
+        <source src="assets/proposalVideoBG.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Your Growth Partner — Gallant Works</p>
+        <h1>We Build Market Leaders, Not Just Marketing Assets.</h1>
+        <p class="lead">The objective is clear: increase visibility, increase bookings, and build momentum that competitors struggle to match.</p>
+        <a class="btn btn-primary" href="booking.html">Let’s Build This Together</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Why This Matters</p>
+        <h2>Visibility Is Revenue</h2>
+        <ul class="feature-list">
+          <li>Winnipeg is competitive, and high-intent patients are searching every day.</li>
+          <li>Search results determine who gets seen first.</li>
+          <li>Visibility determines who gets booked.</li>
+          <li>Bookings determine who grows.</li>
+          <li>If we control visibility, we control momentum.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-tint competition-section">
+      <video class="competition-video" autoplay loop muted playsinline preload="metadata" aria-hidden="true">
+        <source src="assets/competition.mp4" type="video/mp4">
+      </video>
+      <div class="competition-overlay" aria-hidden="true"></div>
+      <div class="container narrow competition-content">
+        <p class="eyebrow">Competitive Landscape</p>
+        <h2>Who We’re Up Against</h2>
+        <div class="authority-card">
+          <ul class="feature-list">
+            <li>The Derm Centre (Victoria Park Medispa)</li>
+            <li>The First Glance Aesthetic Clinic</li>
+            <li>SkinLab Aesthetics</li>
+            <li>Enhance Aesthetics &amp; Laser</li>
+            <li>Uplift Aesthetics</li>
+          </ul>
+        </div>
+        <p class="section-lead">These clinics are strong. Established. Visible. And we are coming for the top positions.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow">Positioning</p>
+        <h2>This Is Not Marketing. This Is Market Positioning.</h2>
+        <p>Winnipeg is not a small market. It is a serious search market with serious competition.</p>
+        <p>Search results determine visibility. Visibility determines bookings. Bookings determine growth.</p>
+        <p>We are not here to participate. We are here to dominate Google Maps and organic visibility.</p>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <p class="eyebrow">What We Do</p>
+        <h2>Digital Execution That Converts Into Bookings</h2>
+        <ul class="feature-list two-col">
+          <li>Website creation, optimization, and AWS-backed hosting</li>
+          <li>Booking integration and conversion optimization</li>
+          <li>Local SEO strategy (Moz-driven, white hat, long-term)</li>
+          <li>Google Maps optimization and ranking expansion</li>
+          <li>Citation management and consistency control</li>
+          <li>Review acquisition and review velocity systems</li>
+          <li>Paid advertising (Google, Meta, TikTok, Maps ads)</li>
+          <li>Business systems and digital workflow architecture</li>
+          <li>Landing page deployment for campaign-level intent</li>
+          <li>Funnel and lead tracking implementation</li>
+          <li>Affiliate and partner web builds</li>
+          <li>Brand positioning and message control</li>
+        </ul>
+        <p class="section-lead">We engineer momentum with durable infrastructure, disciplined strategy, and execution that compounds over time.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Move Strategy</p>
+        <h2>Pre-Move. Transition. Dominate.</h2>
+        <div class="strategy-grid">
+          <article class="authority-card">
+            <h3>PRE-MOVE</h3>
+            <p>We fortify your digital presence before the move.</p>
+            <ul class="mini-list">
+              <li>Secure Google profile controls and category precision</li>
+              <li>Align citations and location data across the web</li>
+              <li>Strengthen keyword relevance before any address change</li>
+              <li>Build authority signals that hold through transition</li>
+            </ul>
+          </article>
+          <article class="authority-card">
+            <h3>TRANSITION</h3>
+            <p>We prevent ranking drops. We protect your reviews. We preserve authority.</p>
+            <ul class="mini-list">
+              <li>Address change protection and update sequencing</li>
+              <li>Review continuity safeguards</li>
+              <li>Traffic and intent redirection to maintain conversion flow</li>
+            </ul>
+          </article>
+          <article class="authority-card">
+            <h3>POST-MOVE</h3>
+            <p>We expand your radius. We accelerate review velocity. We layer paid ads. We scale.</p>
+            <ul class="mini-list">
+              <li>Expand map visibility into adjacent high-value zones</li>
+              <li>Increase review cadence and response quality</li>
+              <li>Deploy paid media for strategic acceleration</li>
+              <li>Systemize reporting and iterate for sustained growth</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <p class="eyebrow">Execution Framework</p>
+        <h2>How We Win</h2>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>1. Google Maps Domination</h3>
+            <ul class="mini-list">
+              <li>Category precision</li>
+              <li>Keyword alignment</li>
+              <li>Citation authority</li>
+              <li>Review velocity systems</li>
+            </ul>
+          </article>
+          <article class="faq-item">
+            <h3>2. Local SEO Engine</h3>
+            <p>Moz-driven, white hat, and built on 10+ years of proven methodology.</p>
+          </article>
+          <article class="faq-item">
+            <h3>3. Conversion-Focused Website Experience</h3>
+            <p>Fast, clear, persuasive pathways from first click to booked appointment.</p>
+          </article>
+          <article class="faq-item">
+            <h3>4. Paid Ad Acceleration</h3>
+            <p>Google, Meta, TikTok, and Maps ads aligned to intent and profitability.</p>
+          </article>
+          <article class="faq-item">
+            <h3>5. Systems &amp; Infrastructure</h3>
+            <p>AWS hosting and scalable architecture built to support long-term growth.</p>
+          </article>
+        </div>
+        <p class="section-lead">We do not use shortcuts.<br>We do not buy fake signals.<br>We build authority the right way.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow">Competitive Execution</p>
+        <h2>We Go to War for Our Clients.</h2>
+        <p>We approach competition with discipline, not noise.</p>
+        <p>We study competitors. We track their keywords. We monitor their rankings. We close gaps. We overtake.</p>
+        <p>We compete intelligently. We execute relentlessly. We win systematically.</p>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <p class="eyebrow">Pricing</p>
+        <h2>Strategic Growth Packages Built for Market Leadership</h2>
+        <p class="section-lead">High-level agencies in North America charge premium rates for full digital infrastructure, local SEO dominance, and conversion optimization. We operate at that level — but this flagship partnership is priced differently.</p>
+
+        <div class="authority-card" style="margin-bottom: 1rem;">
+          <p style="margin-bottom: 0.55rem;"><strong>At the core of every package:</strong></p>
+          <ul class="feature-list">
+            <li>Conversion optimization is always included</li>
+            <li>Booking flow optimization is mandatory</li>
+            <li>Data-driven iteration is ongoing</li>
+            <li>We focus on revenue impact, not vanity metrics</li>
+          </ul>
+        </div>
+
+        <div class="authority-card" style="margin-bottom: 1.25rem;">
+          <h3>Typical Market Pricing (North America)</h3>
+          <p>Website Build: $6,000 – $12,000</p>
+          <p>Local SEO Setup: $3,000 – $8,000</p>
+          <p>Google Maps Optimization: $2,000 – $5,000</p>
+          <p>Paid Ad Strategy Setup: $2,000 – $6,000</p>
+          <p>Monthly Management: $1,000 – $3,500/month</p>
+          <p style="margin-top: 0.75rem;"><strong>Total typical first-year investment: $20,000 – $45,000+</strong></p>
+          <p style="margin-bottom: 0;">We are positioned at that strategic level.</p>
+        </div>
+
+        <div class="strategy-grid">
+          <article class="authority-card">
+            <h3>Foundation Package</h3>
+            <p><strong>Market Rate:</strong> $6,800 setup + $950/month</p>
+            <p><strong>Friends &amp; Family Rate:</strong> $1,500 setup + $470/month</p>
+            <ul class="mini-list">
+              <li>Conversion-focused website build</li>
+              <li>Booking integration optimization</li>
+              <li>Core local SEO setup</li>
+              <li>Google Maps optimization</li>
+              <li>Citation alignment</li>
+              <li>Review velocity system foundation</li>
+            </ul>
+            <p>Digital infrastructure that competes seriously in Winnipeg.</p>
+          </article>
+
+          <article class="authority-card">
+            <h3>Momentum Package</h3>
+            <p><strong>Market Rate:</strong> $12,500 setup + $1,800/month</p>
+            <p><strong>Friends &amp; Family Rate:</strong> $2,900 setup + $870/month</p>
+            <ul class="mini-list">
+              <li>Everything in Foundation plus</li>
+              <li>Advanced keyword cluster strategy</li>
+              <li>Multi-location authority build</li>
+              <li>Paid advertising strategy + launch</li>
+              <li>Funnel tracking &amp; analytics dashboards</li>
+              <li>Review acceleration system</li>
+              <li>Campaign landing pages</li>
+            </ul>
+            <p>Aggressive growth engine for clinics ready to take share.</p>
+          </article>
+
+          <article class="authority-card">
+            <h3>Dominance Package</h3>
+            <p><strong>Market Rate:</strong> $18,000 setup + $3,200/month</p>
+            <p><strong>Friends &amp; Family Rate:</strong> $4,900 setup + $1,250/month</p>
+            <ul class="mini-list">
+              <li>Everything in Momentum plus</li>
+              <li>Full competitive tracking suite</li>
+              <li>Continuous CRO testing &amp; iteration</li>
+              <li>Multi-channel paid ads (Google, Meta, TikTok)</li>
+              <li>Reputation authority layering</li>
+              <li>Quarterly strategic growth roadmap</li>
+              <li>Infrastructure scaling via AWS-backed hosting</li>
+            </ul>
+            <p>Category leadership build-out.</p>
+          </article>
+        </div>
+
+        <p class="section-lead" style="margin-top: 1.3rem;">This is not marketing spend.<br>This is strategic market positioning.</p>
+        <p class="section-lead" style="margin-top: 0.1rem;">Conversion optimization is embedded in every tier.<br>We do not build traffic.<br>We build booked appointments.</p>
+        <p class="section-lead" style="margin-top: 0.1rem;">This pricing is extended because this is a flagship brand build.</p>
+
+        <a class="btn btn-primary" href="booking.html">Let’s Build This Together</a>
+      </div>
+    </section>
+
+    <section class="section section-cta">
+      <div class="container narrow center">
+        <h2>Winnipeg Will Know the Name Skin Refinery.</h2>
+        <p class="lead">We are building a brand that owns attention, earns trust, and converts demand into consistent bookings.</p>
+        <p class="lead">Let’s build something that takes the top spot — and keeps it.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>&copy; Skin Refinery</p>
+    </div>
+  </footer>
+</body>
+</html>
