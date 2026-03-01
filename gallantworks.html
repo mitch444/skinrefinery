@@ -6,6 +6,15 @@
   <title>Your Growth Partner — Gallant Works</title>
   <meta name="description" content="Gallant Works is your growth partner for full books, Google Maps visibility, and long-term digital momentum.">
   <meta name="robots" content="noindex,follow">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-75L5FK63VW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-75L5FK63VW');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -58,6 +67,14 @@
     .hero-content {
       max-width: 800px;
       padding: 0 20px;
+      transform: translateY(clamp(-56px, -7vh, -24px));
+    }
+
+    .hero-gw-logo {
+      display: block;
+      width: min(100%, 620px);
+      margin: 0 auto 1.35rem;
+      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.35));
     }
 
     .hero-content .eyebrow {
@@ -77,6 +94,37 @@
 
     .hero-content .btn {
       margin-top: 0.7rem;
+    }
+
+    .flagship-layout {
+      display: block;
+    }
+
+    .flagship-logo-rail {
+      display: none;
+    }
+
+    .flagship-square-logo {
+      width: min(100%, 270px);
+      margin-left: auto;
+      border-radius: 18px;
+      border: 1px solid rgba(178, 145, 135, 0.32);
+      box-shadow: 0 18px 34px rgba(90, 67, 59, 0.14);
+      background: rgba(255, 252, 249, 0.72);
+    }
+
+    @media (min-width: 980px) {
+      .flagship-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+        column-gap: clamp(1.5rem, 3vw, 3rem);
+        align-items: start;
+      }
+
+      .flagship-logo-rail {
+        display: block;
+        padding-top: 0.35rem;
+      }
     }
 
     .competition-section {
@@ -118,6 +166,137 @@
       z-index: 2;
     }
 
+    .competition-content .authority-card {
+      margin-top: 1rem;
+      border-color: rgba(170, 136, 126, 0.32);
+      background: rgba(255, 252, 249, 0.9);
+    }
+
+    .competition-note {
+      margin-top: 1.15rem;
+      margin-bottom: 0;
+      padding: 0.85rem 1rem;
+      border-left: 3px solid rgba(143, 89, 100, 0.55);
+      border-radius: 10px;
+      background: rgba(255, 250, 247, 0.84);
+      color: #4b3f40;
+      max-width: 70ch;
+    }
+
+    .integrity-note {
+      margin-top: 1.15rem;
+      margin-bottom: 0;
+      padding: 0.95rem 1.05rem;
+      border-left: 3px solid rgba(143, 89, 100, 0.58);
+      border-radius: 10px;
+      background: rgba(255, 250, 247, 0.9);
+      color: #3f3436;
+      max-width: 64ch;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .integrity-note span {
+      display: block;
+    }
+
+    .integrity-note span + span {
+      margin-top: 0.2rem;
+    }
+
+    .base-products-title {
+      margin: 0 0 0.6rem;
+      color: #5f5053;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .base-products {
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .base-product {
+      padding: 0.72rem 0.78rem 0.8rem;
+      border: 1px solid rgba(170, 137, 127, 0.34);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    .base-product span {
+      display: block;
+    }
+
+    .base-product-name {
+      color: #2f2729;
+      font-size: 0.92rem;
+      line-height: 1.25;
+      font-weight: 800;
+      text-wrap: balance;
+    }
+
+    .base-product-desc {
+      margin-top: 0.28rem;
+      color: #6d6163;
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .move-base-suite {
+      margin-top: 1rem;
+      padding: 1rem 1.05rem;
+      background: rgba(255, 252, 249, 0.72);
+    }
+
+    @media (max-width: 1080px) {
+      .move-base-suite .base-products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .move-base-suite .base-products {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pricing-close {
+      margin-top: 1.35rem;
+      margin-bottom: 1.1rem;
+      padding: 1rem 1.05rem;
+      border: 1px solid rgba(178, 145, 135, 0.34);
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(255, 252, 250, 0.94), rgba(249, 241, 238, 0.84));
+      max-width: 74ch;
+      box-shadow: 0 8px 20px rgba(90, 67, 59, 0.07);
+    }
+
+    .pricing-close p {
+      margin: 0;
+    }
+
+    .pricing-close-primary {
+      font-weight: 700;
+      color: #3f3436;
+      line-height: 1.45;
+    }
+
+    .pricing-close-secondary {
+      margin-top: 0.6rem;
+      font-weight: 600;
+      color: #4b3f40;
+      line-height: 1.5;
+    }
+
+    .pricing-close-foot {
+      margin-top: 0.65rem;
+      color: #66595a;
+    }
+
     @supports (height: 100dvh) {
       .hero-section {
         height: 100dvh;
@@ -132,6 +311,7 @@
       .hero-content {
         max-width: 620px;
         padding: 0 18px;
+        transform: translateY(clamp(-40px, -5vh, -18px));
       }
     }
   </style>
@@ -148,7 +328,6 @@
         <a href="index.html#services">Services</a>
         <a href="index.html#about">About</a>
         <a class="nav-link-highlight" href="booking.html">Book Now</a>
-        <a href="gallantworks.html">Growth Partner</a>
       </nav>
     </div>
   </header>
@@ -160,24 +339,32 @@
       </video>
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <p class="eyebrow">Your Growth Partner — Gallant Works</p>
+        <img class="hero-gw-logo" src="assets/whtGWlogo_sr.png" alt="Gallant Works">
+        <p class="eyebrow">Your Growth Partner</p>
         <h1>We Build Market Leaders, Not Just Marketing Assets.</h1>
         <p class="lead">The objective is clear: increase visibility, increase bookings, and build momentum that competitors struggle to match.</p>
         <a class="btn btn-primary" href="booking.html">Let’s Build This Together</a>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section flagship-section">
       <div class="container">
-        <p class="eyebrow">Why This Matters</p>
-        <h2>Visibility Is Revenue</h2>
-        <ul class="feature-list">
-          <li>Winnipeg is competitive, and high-intent patients are searching every day.</li>
-          <li>Search results determine who gets seen first.</li>
-          <li>Visibility determines who gets booked.</li>
-          <li>Bookings determine who grows.</li>
-          <li>If we control visibility, we control momentum.</li>
-        </ul>
+        <div class="flagship-layout">
+          <div class="flagship-content">
+            <p class="eyebrow">Flagship Client</p>
+            <h2>Flagship Client: Why This Matters</h2>
+            <p class="section-lead">This launch with AllyTheInjector (future Skin Refinery) is a flagship client engagement for our web design and marketing agency.</p>
+            <ul class="feature-list">
+              <li>This clinic becomes a lead case study for our agency&rsquo;s future clinic growth work.</li>
+              <li>We are building systems that will scale across locations, offers, and campaigns.</li>
+              <li>Infrastructure decisions today affect authority tomorrow.</li>
+              <li>This is not a one-off project &mdash; it is a foundation.</li>
+            </ul>
+          </div>
+          <aside class="flagship-logo-rail" aria-hidden="true">
+            <img class="flagship-square-logo" src="assets/square_logo_gw_sr.png" alt="">
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -198,17 +385,18 @@
             <li>Uplift Aesthetics</li>
           </ul>
         </div>
-        <p class="section-lead">These clinics are strong. Established. Visible. And we are coming for the top positions.</p>
+        <p class="section-lead competition-note">These clinics are strong, established, and visible. We build defensible positioning and capture high-intent demand systematically.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container narrow">
         <p class="eyebrow">Positioning</p>
-        <h2>This Is Not Marketing. This Is Market Positioning.</h2>
-        <p>Winnipeg is not a small market. It is a serious search market with serious competition.</p>
-        <p>Search results determine visibility. Visibility determines bookings. Bookings determine growth.</p>
-        <p>We are not here to participate. We are here to dominate Google Maps and organic visibility.</p>
+        <h2>This Is a Verticalized Clinic Growth System.</h2>
+        <p>Winnipeg is a serious search market with serious competition.</p>
+        <p>This is not a general marketing agency engagement. It is an operating system designed for clinic authority, visibility, and booked demand.</p>
+        <p>We build defensible positioning.</p>
+        <p>We capture high-intent demand systematically.</p>
       </div>
     </section>
 
@@ -230,14 +418,14 @@
           <li>Affiliate and partner web builds</li>
           <li>Brand positioning and message control</li>
         </ul>
-        <p class="section-lead">We engineer momentum with durable infrastructure, disciplined strategy, and execution that compounds over time.</p>
+        <p class="section-lead competition-note">We engineer momentum with durable infrastructure, disciplined strategy, and execution that compounds over time.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
         <p class="eyebrow">Move Strategy</p>
-        <h2>Pre-Move. Transition. Dominate.</h2>
+        <h2>Pre-Move. Transition. Scale.</h2>
         <div class="strategy-grid">
           <article class="authority-card">
             <h3>PRE-MOVE</h3>
@@ -260,7 +448,7 @@
           </article>
           <article class="authority-card">
             <h3>POST-MOVE</h3>
-            <p>We expand your radius. We accelerate review velocity. We layer paid ads. We scale.</p>
+            <p>We expand your radius, accelerate review velocity, and layer paid ads with controlled pacing.</p>
             <ul class="mini-list">
               <li>Expand map visibility into adjacent high-value zones</li>
               <li>Increase review cadence and response quality</li>
@@ -268,6 +456,27 @@
               <li>Systemize reporting and iterate for sustained growth</li>
             </ul>
           </article>
+        </div>
+        <div class="authority-card move-base-suite">
+          <p class="base-products-title">Core Product Layer</p>
+          <div class="base-products">
+            <div class="base-product">
+              <span class="base-product-name">Authority Preservation</span>
+              <span class="base-product-desc">Protect ranking and trust signals through operational changes.</span>
+            </div>
+            <div class="base-product">
+              <span class="base-product-name">Review Continuity</span>
+              <span class="base-product-desc">Maintain review history, cadence, and response quality.</span>
+            </div>
+            <div class="base-product">
+              <span class="base-product-name">Search Equity</span>
+              <span class="base-product-desc">Retain local visibility across maps, listings, and service pages.</span>
+            </div>
+            <div class="base-product">
+              <span class="base-product-name">Conversion Clarity</span>
+              <span class="base-product-desc">Keep booking pathways clear from search intent to appointment.</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -278,7 +487,7 @@
         <h2>How We Win</h2>
         <div class="faq-list">
           <article class="faq-item">
-            <h3>1. Google Maps Domination</h3>
+            <h3>1. Google Maps Positioning</h3>
             <ul class="mini-list">
               <li>Category precision</li>
               <li>Keyword alignment</li>
@@ -303,25 +512,31 @@
             <p>AWS hosting and scalable architecture built to support long-term growth.</p>
           </article>
         </div>
-        <p class="section-lead">We do not use shortcuts.<br>We do not buy fake signals.<br>We build authority the right way.</p>
+        <p class="section-lead integrity-note">
+          <span>We do not use shortcuts.</span>
+          <span>We do not buy fake signals.</span>
+          <span>We build authority the right way.</span>
+        </p>
       </div>
     </section>
 
     <section class="section">
       <div class="container narrow">
-        <p class="eyebrow">Competitive Execution</p>
-        <h2>We Go to War for Our Clients.</h2>
-        <p>We approach competition with discipline, not noise.</p>
-        <p>We study competitors. We track their keywords. We monitor their rankings. We close gaps. We overtake.</p>
-        <p>We compete intelligently. We execute relentlessly. We win systematically.</p>
+        <p class="eyebrow">Ownership &amp; Alignment</p>
+        <h2>We Execute with Measurable Discipline.</h2>
+        <p>This is a bootstrapped, family-level, equity-aligned launch.</p>
+        <p>Strategic direction from Mitch is embedded into this model and not presented as billable line items.</p>
+        <p>Execution is fulfilled through systemized delivery with hired copywriters, specialists, and focused contract operators.</p>
+        <p>As the system grows, both parties benefit through long-term brand and operational alignment.</p>
       </div>
     </section>
 
     <section class="section section-tint">
       <div class="container">
         <p class="eyebrow">Pricing</p>
-        <h2>Strategic Growth Packages Built for Market Leadership</h2>
-        <p class="section-lead">High-level agencies in North America charge premium rates for full digital infrastructure, local SEO dominance, and conversion optimization. We operate at that level — but this flagship partnership is priced differently.</p>
+        <h2>Strategic Growth Packages Built for Durable Clinic Growth</h2>
+        <p class="section-lead">These packages are positioned as premium infrastructure and ongoing execution delivered through our web design and marketing agency.</p>
+        <p class="section-lead competition-note">Founding Partner rates reflect early-stage collaboration and brand-building alignment. They are not reflective of future market pricing.</p>
 
         <div class="authority-card" style="margin-bottom: 1rem;">
           <p style="margin-bottom: 0.55rem;"><strong>At the core of every package:</strong></p>
@@ -329,26 +544,20 @@
             <li>Conversion optimization is always included</li>
             <li>Booking flow optimization is mandatory</li>
             <li>Data-driven iteration is ongoing</li>
-            <li>We focus on revenue impact, not vanity metrics</li>
+            <li>Delivery is engineered for repeatability and margin protection</li>
           </ul>
         </div>
 
         <div class="authority-card" style="margin-bottom: 1.25rem;">
-          <h3>Typical Market Pricing (North America)</h3>
-          <p>Website Build: $6,000 – $12,000</p>
-          <p>Local SEO Setup: $3,000 – $8,000</p>
-          <p>Google Maps Optimization: $2,000 – $5,000</p>
-          <p>Paid Ad Strategy Setup: $2,000 – $6,000</p>
-          <p>Monthly Management: $1,000 – $3,500/month</p>
-          <p style="margin-top: 0.75rem;"><strong>Total typical first-year investment: $20,000 – $45,000+</strong></p>
-          <p style="margin-bottom: 0;">We are positioned at that strategic level.</p>
+          <h3>Pricing Intent</h3>
+          <p>This structure supports a flagship client build while we finalize the repeatable operating model for future clinics.</p>
+          <p style="margin-bottom: 0;">Positioning remains premium: the focus is durable systems, accountable execution, and long-term authority growth.</p>
         </div>
 
         <div class="strategy-grid">
           <article class="authority-card">
             <h3>Foundation Package</h3>
-            <p><strong>Market Rate:</strong> $6,800 setup + $950/month</p>
-            <p><strong>Friends &amp; Family Rate:</strong> $1,500 setup + $470/month</p>
+            <p><strong>Founding Partner Rate:</strong> $1,500 setup + $470/month</p>
             <ul class="mini-list">
               <li>Conversion-focused website build</li>
               <li>Booking integration optimization</li>
@@ -357,13 +566,12 @@
               <li>Citation alignment</li>
               <li>Review velocity system foundation</li>
             </ul>
-            <p>Digital infrastructure that competes seriously in Winnipeg.</p>
+            <p>Digital infrastructure for stable visibility and conversion growth in Winnipeg.</p>
           </article>
 
           <article class="authority-card">
             <h3>Momentum Package</h3>
-            <p><strong>Market Rate:</strong> $12,500 setup + $1,800/month</p>
-            <p><strong>Friends &amp; Family Rate:</strong> $2,900 setup + $870/month</p>
+            <p><strong>Founding Partner Rate:</strong> $2,900 setup + $870/month</p>
             <ul class="mini-list">
               <li>Everything in Foundation plus</li>
               <li>Advanced keyword cluster strategy</li>
@@ -373,13 +581,12 @@
               <li>Review acceleration system</li>
               <li>Campaign landing pages</li>
             </ul>
-            <p>Aggressive growth engine for clinics ready to take share.</p>
+            <p>A structured growth engine for clinics ready to expand qualified demand capture.</p>
           </article>
 
           <article class="authority-card">
-            <h3>Dominance Package</h3>
-            <p><strong>Market Rate:</strong> $18,000 setup + $3,200/month</p>
-            <p><strong>Friends &amp; Family Rate:</strong> $4,900 setup + $1,250/month</p>
+            <h3>Leadership Package</h3>
+            <p><strong>Founding Partner Rate:</strong> $4,900 setup + $1,250/month</p>
             <ul class="mini-list">
               <li>Everything in Momentum plus</li>
               <li>Full competitive tracking suite</li>
@@ -389,13 +596,15 @@
               <li>Quarterly strategic growth roadmap</li>
               <li>Infrastructure scaling via AWS-backed hosting</li>
             </ul>
-            <p>Category leadership build-out.</p>
+            <p>Full-system execution for sustained category authority.</p>
           </article>
         </div>
 
-        <p class="section-lead" style="margin-top: 1.3rem;">This is not marketing spend.<br>This is strategic market positioning.</p>
-        <p class="section-lead" style="margin-top: 0.1rem;">Conversion optimization is embedded in every tier.<br>We do not build traffic.<br>We build booked appointments.</p>
-        <p class="section-lead" style="margin-top: 0.1rem;">This pricing is extended because this is a flagship brand build.</p>
+        <div class="pricing-close">
+          <p class="section-lead pricing-close-primary">This is a premium clinic growth operating model, not commodity marketing output.</p>
+          <p class="section-lead pricing-close-secondary">Strategy is embedded. Execution is systemized. Every tier is designed for durable visibility, booked appointments, and repeatable performance.</p>
+          <p class="section-lead pricing-close-foot">This flagship client engagement establishes the standard we intend to scale.</p>
+        </div>
 
         <a class="btn btn-primary" href="booking.html">Let’s Build This Together</a>
       </div>
@@ -405,7 +614,7 @@
       <div class="container narrow center">
         <h2>Winnipeg Will Know the Name Skin Refinery.</h2>
         <p class="lead">We are building a brand that owns attention, earns trust, and converts demand into consistent bookings.</p>
-        <p class="lead">Let’s build something that takes the top spot — and keeps it.</p>
+        <p class="lead">Let’s build the system that earns durable authority and sustains long-term growth.</p>
       </div>
     </section>
   </main>
@@ -415,5 +624,21 @@
       <p>&copy; Skin Refinery</p>
     </div>
   </footer>
+  <script>
+    (function () {
+      if (typeof window.gtag !== "function") {
+        return;
+      }
+
+      document.querySelectorAll('a[href="booking.html"]').forEach(function (link) {
+        link.addEventListener("click", function () {
+          window.gtag("event", "booking_entry_click", {
+            source_page: "gallantworks",
+            link_text: (link.textContent || "").trim() || "booking_link"
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

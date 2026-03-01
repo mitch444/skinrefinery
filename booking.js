@@ -453,6 +453,14 @@
     );
   }
 
+  function sendGAEvent(eventName, params) {
+    if (typeof window.gtag !== "function") {
+      return;
+    }
+
+    window.gtag("event", eventName, params || {});
+  }
+
   function initBookingFlow(options) {
     var opts = options || {};
     var root = document.getElementById(opts.rootId || "booking-root");
@@ -460,6 +468,9 @@
     var initialServices;
     var initialCategory;
     var state;
+    var lastTrackedStep;
+    var flowStartTracked;
+    var conversionTracked;
 
     if (!root) {
       return;
@@ -502,6 +513,64 @@
       errors: {},
       saved: false
     };
+
+    lastTrackedStep = null;
+    flowStartTracked = false;
+    conversionTracked = false;
+
+    function buildAnalyticsContext() {
+      return {
+        booking_step: state.step,
+        selected_services_count: state.selectedServices.length,
+        selected_category: state.selectedCategory || "none",
+        requires_deposit: state.requireDeposit ? "yes" : "no",
+        deposit_paid: state.depositPaid ? "yes" : "no"
+      };
+    }
+
+    function trackBookingEvent(eventName, extraParams) {
+      var payload = buildAnalyticsContext();
+
+      if (extraParams) {
+        Object.keys(extraParams).forEach(function (key) {
+          payload[key] = extraParams[key];
+        });
+      }
+
+      sendGAEvent(eventName, payload);
+    }
+
+    function trackStepView() {
+      var stepPath;
+
+      if (lastTrackedStep === state.step) {
+        return;
+      }
+
+      stepPath = window.location.pathname + "#step-" + state.step;
+      trackBookingEvent("booking_step_view", {
+        step_label: "step_" + state.step
+      });
+      sendGAEvent("page_view", {
+        page_title: "Booking Step " + state.step,
+        page_path: stepPath,
+        page_location: window.location.origin + stepPath
+      });
+
+      lastTrackedStep = state.step;
+    }
+
+    function trackFlowStart() {
+      if (flowStartTracked) {
+        return;
+      }
+
+      trackBookingEvent("booking_flow_started", {
+        preselected_services_count: initialServices.length,
+        preselected_category: initialCategory || "none"
+      });
+      flowStartTracked = true;
+    }
 
     function clearErrors() {
       state.errors = {};
@@ -661,6 +730,10 @@
       state.bundleBanner = "";
       state.errors = {};
       state.saved = false;
+      lastTrackedStep = null;
+      flowStartTracked = false;
+      conversionTracked = false;
+      trackFlowStart();
       render();
     }
 
@@ -1122,6 +1195,10 @@
 
       backButtons.forEach(function (button) {
         button.addEventListener("click", function () {
+          trackBookingEvent("booking_back_clicked", {
+            from_step: state.step
+          });
+
           if (state.step === 2) {
             goTo(1);
             return;
@@ -1157,6 +1234,9 @@
             state.isFirstVisit = guestType === "first";
             state.requireDeposit = state.isFirstVisit;
             state.depositPaid = false;
+            trackBookingEvent("booking_guest_type_selected", {
+              guest_type: state.isFirstVisit ? "first_visit" : "returning_guest"
+            });
             clearErrors();
             goTo(2);
           });
@@ -1168,6 +1248,9 @@
           button.addEventListener("click", function () {
             state.selectedCategory = button.getAttribute("data-category") || "";
             state.bundleBanner = "";
+            trackBookingEvent("booking_category_selected", {
+              category: state.selectedCategory || "none"
+            });
             clearErrors();
             render();
           });
@@ -1176,8 +1259,12 @@
         root.querySelectorAll("[data-service]").forEach(function (button) {
           button.addEventListener("click", function () {
             var serviceKey = button.getAttribute("data-service") || "";
+            var wasSelected = hasService(serviceKey);
             toggleService(serviceKey);
             state.bundleBanner = "";
+            trackBookingEvent(wasSelected ? "booking_service_removed" : "booking_service_added", {
+              service_key: serviceKey
+            });
             clearErrors();
             render();
           });
@@ -1188,6 +1275,9 @@
             var serviceKey = button.getAttribute("data-remove-service") || "";
             removeService(serviceKey);
             state.bundleBanner = "";
+            trackBookingEvent("booking_service_removed", {
+              service_key: serviceKey
+            });
             clearErrors();
             render();
           });
@@ -1196,9 +1286,15 @@
         root.querySelectorAll("[data-add-enhancement]").forEach(function (button) {
           button.addEventListener("click", function () {
             var serviceKey = button.getAttribute("data-add-enhancement") || "";
+            var alreadySelected = hasService(serviceKey);
 
             addService(serviceKey);
             state.bundleBanner = "";
+            if (!alreadySelected) {
+              trackBookingEvent("booking_enhancement_added", {
+                service_key: serviceKey
+              });
+            }
             clearErrors();
             render();
           });
@@ -1218,6 +1314,10 @@
             });
 
             state.bundleBanner = "Bundle Added — Optimized Treatment Plan Created";
+            trackBookingEvent("booking_bundle_added", {
+              bundle_id: bundle.id,
+              bundle_size: bundle.includes.length
+            });
             clearErrors();
             render();
           });
@@ -1229,6 +1329,10 @@
             if (!state.selectedServices.length) {
               return;
             }
+            trackBookingEvent("booking_step_completed", {
+              completed_step: 2,
+              next_step: 3
+            });
             goTo(3);
           });
         }
@@ -1244,6 +1348,9 @@
             }
 
             state.selectedDate = isoDate;
+            trackBookingEvent("booking_date_selected", {
+              appointment_date: isoDate
+            });
             clearErrors();
             render();
           });
@@ -1255,6 +1362,10 @@
             if (!state.selectedDate) {
               return;
             }
+            trackBookingEvent("booking_step_completed", {
+              completed_step: 3,
+              next_step: 4
+            });
             goTo(4);
           });
         }
@@ -1264,6 +1375,9 @@
         root.querySelectorAll("[data-time]").forEach(function (button) {
           button.addEventListener("click", function () {
             state.selectedTime = button.getAttribute("data-time") || "";
+            trackBookingEvent("booking_time_selected", {
+              appointment_time: state.selectedTime || "none"
+            });
             clearErrors();
             render();
           });
@@ -1272,15 +1386,18 @@
         var timeNext = root.querySelector('[data-action="next-time"]');
         if (timeNext) {
           timeNext.addEventListener("click", function () {
+            var nextStep;
+
             if (!state.selectedTime) {
               return;
             }
 
-            if (state.requireDeposit) {
-              goTo(5);
-            } else {
-              goTo(6);
-            }
+            nextStep = state.requireDeposit ? 5 : 6;
+            trackBookingEvent("booking_step_completed", {
+              completed_step: 4,
+              next_step: nextStep
+            });
+            goTo(nextStep);
           });
         }
       }
@@ -1290,6 +1407,9 @@
         if (skipDeposit) {
           skipDeposit.addEventListener("click", function () {
             state.depositPaid = false;
+            trackBookingEvent("booking_deposit_skipped", {
+              deposit_amount: state.depositAmount
+            });
             clearErrors();
             goTo(6);
           });
@@ -1299,16 +1419,23 @@
         if (reserve) {
           reserve.addEventListener("click", function () {
             if (!validatePayment()) {
+              trackBookingEvent("booking_deposit_validation_error");
               render();
               return;
             }
 
+            trackBookingEvent("booking_deposit_submitted", {
+              deposit_amount: state.depositAmount
+            });
             state.processingDeposit = true;
             render();
 
             setTimeout(function () {
               state.processingDeposit = false;
               state.depositPaid = true;
+              trackBookingEvent("booking_deposit_paid", {
+                deposit_amount: state.depositAmount
+              });
               clearErrors();
               goTo(6);
             }, 800);
@@ -1320,12 +1447,31 @@
         var confirm = root.querySelector('[data-action="confirm"]');
         if (confirm) {
           confirm.addEventListener("click", function () {
+            var leadValue;
+            var leadPayload;
+
             if (!validateDetails()) {
+              trackBookingEvent("booking_details_validation_error");
               render();
               return;
             }
 
             state.confirmationNumber = createConfirmationNumber();
+            trackBookingEvent("booking_step_completed", {
+              completed_step: 6,
+              next_step: 7
+            });
+            if (!conversionTracked) {
+              leadValue = state.depositPaid ? Number(state.depositAmount) || 0 : 0;
+              leadPayload = buildAnalyticsContext();
+              leadPayload.currency = "CAD";
+              leadPayload.value = leadValue;
+              sendGAEvent("generate_lead", leadPayload);
+              trackBookingEvent("booking_confirmed", {
+                conversion_type: "appointment"
+              });
+              conversionTracked = true;
+            }
             clearErrors();
             goTo(7);
           });
@@ -1333,9 +1479,19 @@
       }
 
       if (state.step === 7) {
+        root.querySelectorAll(".next-step-link").forEach(function (link) {
+          link.addEventListener("click", function () {
+            trackBookingEvent("booking_next_step_clicked", {
+              link_href: link.getAttribute("href") || "",
+              link_text: (link.textContent || "").trim() || "next_step_link"
+            });
+          });
+        });
+
         var restart = root.querySelector('[data-action="restart"]');
         if (restart) {
           restart.addEventListener("click", function () {
+            trackBookingEvent("booking_restart_clicked");
             restartFlow();
           });
         }
@@ -1351,9 +1507,11 @@
         renderStep() +
         "</article>";
       bindStepEvents();
+      trackStepView();
     }
 
     root.innerHTML = "";
+    trackFlowStart();
     render();
   }
 
