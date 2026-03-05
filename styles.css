@@ -878,17 +878,59 @@ p {
 }
 
 .footer-trust {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   margin: 0 0 1rem;
-  padding: 1rem 1rem 1.05rem;
-  border: 1px solid rgba(170, 139, 122, 0.28);
-  border-radius: 12px;
+  padding: clamp(1.35rem, 2.8vw, 2.1rem);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1rem 1.75rem;
+  align-items: start;
+  border: 1px solid rgba(170, 139, 122, 0.22);
+  border-radius: 28px;
   background:
-    linear-gradient(180deg, rgba(255, 252, 249, 0.98) 0%, rgba(250, 244, 238, 0.94) 100%);
-  box-shadow: 0 8px 20px rgba(89, 67, 53, 0.07);
+    radial-gradient(circle at 14% 18%, rgba(244, 216, 215, 0.5), transparent 30%),
+    radial-gradient(circle at 92% 12%, rgba(227, 195, 169, 0.38), transparent 26%),
+    linear-gradient(135deg, rgba(255, 253, 250, 0.98) 0%, rgba(251, 245, 239, 0.96) 52%, rgba(246, 236, 229, 0.98) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    0 24px 54px rgba(89, 67, 53, 0.1);
+}
+
+.footer-trust::before,
+.footer-trust::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.footer-trust::before {
+  inset: auto auto -72px -60px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(233, 203, 191, 0.34) 0%, rgba(233, 203, 191, 0) 72%);
+}
+
+.footer-trust::after {
+  top: -72px;
+  right: -52px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.74) 0%, rgba(255, 255, 255, 0) 68%);
 }
 
 .footer-trust-kicker {
-  margin: 0 0 0.35rem;
+  margin: 0;
+  justify-self: start;
+  padding: 0.42rem 0.78rem;
+  border: 1px solid rgba(166, 111, 114, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 10px 20px rgba(99, 74, 61, 0.06);
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.11em;
@@ -898,51 +940,79 @@ p {
 
 .footer-trust-title {
   margin: 0;
-  font-size: clamp(1.05rem, 2vw, 1.28rem);
-  line-height: 1.25;
-  color: #2d2522;
+  max-width: 14ch;
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: #2a211a;
 }
 
 .footer-trust-copy {
-  margin-top: 0.7rem;
-  max-width: 72ch;
-  font-size: 0.96rem;
-  line-height: 1.58;
+  margin: 0;
+  max-width: 35ch;
+  padding-top: 0.15rem;
+  font-size: 1rem;
+  line-height: 1.72;
+  color: #51463f;
+}
+
+.footer-trust-kicker,
+.footer-trust-title,
+.footer-trust-copy {
+  grid-column: 1;
 }
 
 .footer-trust-badges {
-  margin-top: 0.9rem;
+  position: relative;
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  margin-top: 0;
+  padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.65rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  border: 1px solid rgba(176, 141, 111, 0.16);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(250, 244, 238, 0.86) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.84),
+    0 18px 38px rgba(101, 77, 61, 0.08);
 }
 
 .trust-credential {
-  min-height: 188px;
-  padding: 1rem 0.95rem 0.95rem;
-  border: 1px solid rgba(176, 141, 111, 0.28);
-  border-radius: 18px;
+  min-height: 0;
+  padding: 1rem;
+  border: 1px solid rgba(176, 141, 111, 0.18);
+  border-radius: 22px;
   background:
-    radial-gradient(circle at top, rgba(243, 226, 210, 0.44), transparent 48%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(251, 245, 239, 0.86) 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 10px 20px rgba(103, 79, 64, 0.06);
-  text-align: center;
+    radial-gradient(circle at 100% 0%, rgba(244, 216, 215, 0.36), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 248, 244, 0.94) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 12px 28px rgba(103, 79, 64, 0.07);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.12rem 0.85rem;
+  align-items: start;
+  text-align: left;
 }
 
 .trust-credential-mark {
-  width: 72px;
+  width: 56px;
   aspect-ratio: 1;
-  margin: 0 auto 0.8rem;
-  border-radius: 50%;
-  border: 1px solid rgba(160, 124, 96, 0.3);
+  margin: 0;
+  grid-row: 1 / span 3;
+  border-radius: 18px;
+  border: 1px solid rgba(160, 124, 96, 0.22);
   background:
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.92), transparent 34%),
-    linear-gradient(135deg, #edd5bc 0%, #e3c4a2 48%, #d7b28f 100%);
+    radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.92), transparent 32%),
+    linear-gradient(135deg, #f0ddd5 0%, #ebd5c5 48%, #dfc1a5 100%);
   display: grid;
   place-items: center;
   box-shadow:
-    inset 0 2px 8px rgba(255, 255, 255, 0.58),
-    0 8px 16px rgba(113, 83, 59, 0.14);
+    inset 0 2px 8px rgba(255, 255, 255, 0.64),
+    0 8px 16px rgba(113, 83, 59, 0.1);
   position: relative;
 }
 
@@ -950,17 +1020,17 @@ p {
   content: "";
   position: absolute;
   inset: 6px;
-  border: 1px dashed rgba(127, 89, 64, 0.38);
-  border-radius: 50%;
+  border: 1px solid rgba(127, 89, 64, 0.18);
+  border-radius: 14px;
 }
 
 .trust-credential-mark span {
   position: relative;
   z-index: 1;
-  color: #533d31;
-  font-size: 0.98rem;
+  color: #6d4e46;
+  font-size: 0.86rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
 }
 
 .trust-credential-type,
@@ -970,31 +1040,41 @@ p {
 }
 
 .trust-credential-type {
-  font-size: 0.68rem;
+  align-self: start;
+  justify-self: start;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(246, 233, 227, 0.92);
+  font-size: 0.64rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-strong);
+  color: #8f5964;
 }
 
 .trust-credential-title {
-  margin-top: 0.38rem;
-  font-size: 0.96rem;
-  line-height: 1.32;
-  color: #2d2522;
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  line-height: 1.28;
+  color: #2c2421;
 }
 
 .trust-credential-meta {
-  margin-top: 0.42rem;
-  font-size: 0.78rem;
-  line-height: 1.45;
-  color: #756964;
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #6e625d;
 }
 
 .footer-trust-note {
-  margin-top: 0.85rem;
+  grid-column: 1 / -1;
+  margin: 0.15rem 0 0;
+  padding: 0.88rem 1rem;
+  border-left: 3px solid rgba(143, 89, 100, 0.34);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.56);
   font-size: 0.82rem;
-  line-height: 1.5;
+  line-height: 1.58;
   color: #786b63;
 }
 
@@ -1092,6 +1172,26 @@ p {
 }
 
 @media (max-width: 920px) {
+  .footer-trust {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-trust-title,
+  .footer-trust-copy {
+    max-width: none;
+  }
+
+  .footer-trust-kicker,
+  .footer-trust-title,
+  .footer-trust-copy,
+  .footer-trust-badges {
+    grid-column: 1;
+  }
+
+  .footer-trust-badges {
+    grid-row: auto;
+  }
+
   .footer-trust-badges {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1213,5 +1313,11 @@ p {
 
   .footer-trust-badges {
     grid-template-columns: 1fr;
+    padding: 0.85rem;
+  }
+
+  .trust-credential {
+    grid-template-columns: 52px 1fr;
+    gap: 0.12rem 0.75rem;
   }
 }
