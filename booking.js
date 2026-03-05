@@ -1154,7 +1154,7 @@
           '<article class="next-step-card">' +
           '<h3>Contact Concierge</h3>' +
           "<p>Need to adjust timing or ask a question? We can help quickly.</p>" +
-          '<a class="next-step-link" href="tel:+12049990473">Call (204) 999-0473</a>' +
+          '<span class="next-step-link next-step-link-static">Direct line: (204) 999-04XX</span>' +
           "</article>" +
           '<article class="next-step-card">' +
           '<h3>Explore Complementary Treatments</h3>' +
@@ -1171,7 +1171,7 @@
           '<article class="next-step-card">' +
           '<h3>Follow for Clinical Updates</h3>' +
           "<p>See treatment education, outcomes, and scheduling updates.</p>" +
-          '<a class="next-step-link" href="https://instagram.com/allytheinjector" target="_blank" rel="noopener noreferrer">Follow @allytheinjector</a>' +
+          '<span class="next-step-link next-step-link-static">Instagram handle shared privately</span>' +
           "</article>" +
           "</div>" +
           "</section>" +
@@ -1313,7 +1313,7 @@
               addService(serviceKey);
             });
 
-            state.bundleBanner = "Bundle Added — Optimized Treatment Plan Created";
+            state.bundleBanner = "Bundle Added: Optimized Treatment Plan Created";
             trackBookingEvent("booking_bundle_added", {
               bundle_id: bundle.id,
               bundle_size: bundle.includes.length
